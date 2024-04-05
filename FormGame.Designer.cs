@@ -85,7 +85,7 @@ namespace AtestatMinesweeper
             // 
             // buttontest
             // 
-            this.buttontest.Location = new System.Drawing.Point(505, 22);
+            this.buttontest.Location = new System.Drawing.Point(86, 130);
             this.buttontest.Name = "buttontest";
             this.buttontest.Size = new System.Drawing.Size(94, 29);
             this.buttontest.TabIndex = 4;
@@ -96,9 +96,9 @@ namespace AtestatMinesweeper
             // panelGame
             // 
             this.panelGame.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panelGame.Location = new System.Drawing.Point(206, 122);
+            this.panelGame.Location = new System.Drawing.Point(289, 12);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(802, 515);
+            this.panelGame.Size = new System.Drawing.Size(650, 650);
             this.panelGame.TabIndex = 5;
             // 
             // FormGame
