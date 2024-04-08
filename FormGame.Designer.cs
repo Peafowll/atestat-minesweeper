@@ -20,7 +20,7 @@ namespace AtestatMinesweeper
             }
             base.Dispose(disposing);
         }
-
+        int x;
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -29,12 +29,16 @@ namespace AtestatMinesweeper
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxBombsRemaining = new System.Windows.Forms.TextBox();
             this.labelRemaining = new System.Windows.Forms.Label();
             this.textBoxBombsFound = new System.Windows.Forms.TextBox();
             this.labelFound = new System.Windows.Forms.Label();
             this.buttontest = new System.Windows.Forms.Button();
             this.panelGame = new System.Windows.Forms.Panel();
+            this.timerGame = new System.Windows.Forms.Timer(this.components);
+            this.textBoxTimer = new System.Windows.Forms.TextBox();
+            this.buttonRandomizeTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxBombsRemaining
@@ -85,7 +89,7 @@ namespace AtestatMinesweeper
             // 
             // buttontest
             // 
-            this.buttontest.Location = new System.Drawing.Point(86, 130);
+            this.buttontest.Location = new System.Drawing.Point(46, 125);
             this.buttontest.Name = "buttontest";
             this.buttontest.Size = new System.Drawing.Size(94, 29);
             this.buttontest.TabIndex = 4;
@@ -101,11 +105,42 @@ namespace AtestatMinesweeper
             this.panelGame.Size = new System.Drawing.Size(650, 650);
             this.panelGame.TabIndex = 5;
             // 
+            // timerGame
+            // 
+            this.timerGame.Tick += new System.EventHandler(this.timerGame_Tick);
+            // 
+            // textBoxTimer
+            // 
+            this.textBoxTimer.BackColor = System.Drawing.Color.Black;
+            this.textBoxTimer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBoxTimer.Font = new System.Drawing.Font("alarm clock", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxTimer.ForeColor = System.Drawing.Color.SpringGreen;
+            this.textBoxTimer.HideSelection = false;
+            this.textBoxTimer.Location = new System.Drawing.Point(23, 621);
+            this.textBoxTimer.Name = "textBoxTimer";
+            this.textBoxTimer.ReadOnly = true;
+            this.textBoxTimer.Size = new System.Drawing.Size(238, 39);
+            this.textBoxTimer.TabIndex = 7;
+            this.textBoxTimer.TabStop = false;
+            this.textBoxTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonRandomizeTest
+            // 
+            this.buttonRandomizeTest.Location = new System.Drawing.Point(46, 190);
+            this.buttonRandomizeTest.Name = "buttonRandomizeTest";
+            this.buttonRandomizeTest.Size = new System.Drawing.Size(94, 29);
+            this.buttonRandomizeTest.TabIndex = 8;
+            this.buttonRandomizeTest.Text = "rando";
+            this.buttonRandomizeTest.UseVisualStyleBackColor = true;
+            this.buttonRandomizeTest.Click += new System.EventHandler(this.buttonRandomizeTest_Click);
+            // 
             // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 672);
+            this.Controls.Add(this.buttonRandomizeTest);
+            this.Controls.Add(this.textBoxTimer);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.buttontest);
             this.Controls.Add(this.labelFound);
@@ -128,5 +163,8 @@ namespace AtestatMinesweeper
         private System.Windows.Forms.Label labelFound;
         private System.Windows.Forms.Button buttontest;
         private System.Windows.Forms.Panel panelGame;
+        private System.Windows.Forms.Timer timerGame;
+        private System.Windows.Forms.TextBox textBoxTimer;
+        private System.Windows.Forms.Button buttonRandomizeTest;
     }
 }
