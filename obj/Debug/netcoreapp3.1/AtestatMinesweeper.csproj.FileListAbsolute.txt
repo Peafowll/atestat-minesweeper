@@ -16,3 +16,21 @@ F:\Proiect Atestat Minesweeper\AtestatMinesweeper\obj\Debug\netcoreapp3.1\Atesta
 F:\Proiect Atestat Minesweeper\AtestatMinesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.pdb
 F:\Proiect Atestat Minesweeper\AtestatMinesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.genruntimeconfig.cache
 F:\Proiect Atestat Minesweeper\AtestatMinesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.Properties.Resources.resources
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\bin\Debug\netcoreapp3.1\AtestatMinesweeper.exe
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\bin\Debug\netcoreapp3.1\AtestatMinesweeper.deps.json
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\bin\Debug\netcoreapp3.1\AtestatMinesweeper.runtimeconfig.json
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\bin\Debug\netcoreapp3.1\AtestatMinesweeper.runtimeconfig.dev.json
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\bin\Debug\netcoreapp3.1\AtestatMinesweeper.dll
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\bin\Debug\netcoreapp3.1\AtestatMinesweeper.pdb
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.csproj.AssemblyReference.cache
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.FormStart.resources
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.FormGame.resources
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.Properties.Resources.resources
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.csproj.GenerateResource.cache
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.AssemblyInfoInputs.cache
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.AssemblyInfo.cs
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.csproj.CoreCompileInputs.cache
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.dll
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.pdb
+C:\Users\s310\Desktop\workatestat\atestat-minesweeper\obj\Debug\netcoreapp3.1\AtestatMinesweeper.genruntimeconfig.cache

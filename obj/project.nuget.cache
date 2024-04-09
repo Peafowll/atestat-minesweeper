@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rLeLA9dX8Y7FZbkRuzpnd9ZiCZkeCZknA1U/xZH2d/Z5MuoT23aHSCEBOcOOZImSblxyuQaBMPU6XFtRVBSDIg==",
+  "dgSpecHash": "zSW8880TQcIgE+rEUPksjSWNNlD01Ne8rd4oo/TxuK45JmXhN9jFAzTLyQLwBtloxnGJ1cS8q+6ben/DacI7vA==",
   "success": true,
-  "projectFilePath": "F:\\Proiect Atestat Minesweeper\\AtestatMinesweeper\\AtestatMinesweeper.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\3.1.25\\microsoft.netcore.app.host.win-x86.3.1.25.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\s310\\Desktop\\workatestat\\atestat-minesweeper\\AtestatMinesweeper.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

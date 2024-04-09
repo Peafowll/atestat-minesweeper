@@ -105,16 +105,16 @@ namespace AtestatMinesweeper
             int currentCell = 1;
             int spotSizeHeight = panelGame.Height / globals.fieldSizeX;
             int spotSizeWidth = panelGame.Width / globals.fieldSizeY;
-            for (int y=1;y<= globals.fieldSizeY;y++)
+            for (int x=1;x<= globals.fieldSizeY;x++)
             {
-                for (int x = 1; x <= globals.fieldSizeX; x++)
+                for (int y = 1; y <= globals.fieldSizeX; y++)
                 {
                     Button buttonToPlace = new Button()
                     {
                         Width = spotSizeWidth,
                         Height = spotSizeHeight,
                         BackColor = Color.Gray,
-                        Location = new Point((y * spotSizeHeight)- spotSizeHeight, (x * spotSizeWidth)-spotSizeWidth),
+                        Location = new Point((x-1) * spotSizeWidth, (y-1) * spotSizeHeight),
                         FlatStyle = FlatStyle.Flat,
                         Parent = panelGame,
                         Text = currentCell.ToString(),
