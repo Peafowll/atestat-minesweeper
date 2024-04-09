@@ -36,13 +36,13 @@ namespace AtestatMinesweeper
                         {
                             gameField[i, j].hiddenStatus = 1;
                             gameField[i, j].button.ForeColor = Color.Red;
-                            gameField[i, j].button.Text = "bomb";
+                            gameField[i, j].button.Text = "B";
                         }
                         else
                         {
                             gameField[i, j].hiddenStatus = 0;
                             gameField[i, j].button.ForeColor = Color.Black;
-                            gameField[i, j].button.Text = "empty";
+                            gameField[i, j].button.Text = "";
                         }
 
                     }
@@ -146,12 +146,13 @@ namespace AtestatMinesweeper
                         Location = new Point((x-1) * spotSizeWidth, (y-1) * spotSizeHeight),
                         FlatStyle = FlatStyle.Flat,
                         Parent = panelGame,
-                        Text = "empty",//initilazing button properties
+                        Text = "",//initilazing button properties
                     };
                     globalMatrixes.gameField[x, y] = new spot(buttonToPlace, 0, -1);  //intilizes button as safe and unrevealed 
                     currentCell++;
                 }
             }
+
 
         }
         private void buttontest_Click(object sender, EventArgs e)
