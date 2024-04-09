@@ -12,13 +12,15 @@ namespace AtestatMinesweeper
     {
         public static class globals
         {
-            public static int totalBombCount = 6;
+            public static int totalBombCount = 10;
             public static int remainingBombCount;
             public static int foundBombCount = 0;
-            public static int totalSquares = 25;
+            public static int totalSquares = 100;
             public static int fieldSizeX = 5;
             public static int fieldSizeY = 5;
             public static float timeElapsedInSeconds = 0;
+            public static int subSecondTime = 0;
+            public static int secondTime = 0;
         }
         public static class globalMatrixes
         {
@@ -26,24 +28,51 @@ namespace AtestatMinesweeper
             public static spot[,] gameField = new spot[globals.fieldSizeY+1, globals.fieldSizeX+1];
             public static void convertBackToFront()
             {
-                for(int i=1;i<=globals.fieldSizeX;i++)
+                for(int i=1;i<=globals.fieldSizeY;i++)
                 {
-                    for(int j=1;j<=globals.fieldSizeY;j++)
+                    for(int j=1;j<=globals.fieldSizeX;j++)
                     {
                         if (matrixBackend[i, j] == 1)
                         {
                             gameField[i, j].hiddenStatus = 1;
                             gameField[i, j].button.ForeColor = Color.Red;
+                            gameField[i, j].button.Text = "bomb";
                         }
                         else
                         {
                             gameField[i, j].hiddenStatus = 0;
                             gameField[i, j].button.ForeColor = Color.Black;
+                            gameField[i, j].button.Text = "empty";
                         }
 
                     }
                 }
+                //miez number modifier
+                for (int i = 1; i <= globals.fieldSizeY; i++)
+                {
+                    for (int j = 1; j <= globals.fieldSizeX; j++)
+                    {
+                        if(gameField[i, j].hiddenStatus == 0)
+                        {
+                            int neighbours = 0;
+                            for (int ii= i - 1; ii <= i + 1;ii++)
+                            {
+                                for(int jj=j-1;jj<=j+1;jj++)
+                                {
+                                    if(ii>=1 && ii<= globals.fieldSizeY && jj>=1 && jj<=globals.fieldSizeX)
+                                        if (gameField[ii, jj].hiddenStatus == 1 )
+                                        neighbours++;
+                                }
+
+                            }
+                            gameField[i, j].button.ForeColor = Color.DarkBlue;
+                            gameField[i, j].button.Text = neighbours.ToString();
+                            gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                        }
+                    }
+                }
             }
+
         }
         public class spot
         {
@@ -117,9 +146,9 @@ namespace AtestatMinesweeper
                         Location = new Point((x-1) * spotSizeWidth, (y-1) * spotSizeHeight),
                         FlatStyle = FlatStyle.Flat,
                         Parent = panelGame,
-                        Text = currentCell.ToString(),
+                        Text = "empty",//initilazing button properties
                     };
-                    globalMatrixes.gameField[x, y] = new spot(buttonToPlace, 0, -1);   
+                    globalMatrixes.gameField[x, y] = new spot(buttonToPlace, 0, -1);  //intilizes button as safe and unrevealed 
                     currentCell++;
                 }
             }
@@ -131,7 +160,15 @@ namespace AtestatMinesweeper
         }
         private void timerGame_Tick(object sender, EventArgs e)
         {
-            //will code later, errors kill me
+            //Alfred, adu Bat-Streangul acum!!!
+            if(globals.subSecondTime==9)
+            {
+                globals.subSecondTime = 0;
+                globals.secondTime += 1;
+            }
+            else
+                globals.subSecondTime += 1;
+            textBoxTimer.Text=globals.secondTime.ToString() + "." +globals.subSecondTime.ToString();
         }
 
         private void buttonRandomizeTest_Click(object sender, EventArgs e)

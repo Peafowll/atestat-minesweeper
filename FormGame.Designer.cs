@@ -45,22 +45,23 @@ namespace AtestatMinesweeper
             // 
             this.textBoxBombsRemaining.BackColor = System.Drawing.Color.Black;
             this.textBoxBombsRemaining.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBoxBombsRemaining.Font = new System.Drawing.Font("alarm clock", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBombsRemaining.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxBombsRemaining.ForeColor = System.Drawing.Color.Red;
             this.textBoxBombsRemaining.HideSelection = false;
-            this.textBoxBombsRemaining.Location = new System.Drawing.Point(23, 12);
+            this.textBoxBombsRemaining.Location = new System.Drawing.Point(20, 9);
+            this.textBoxBombsRemaining.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBombsRemaining.Name = "textBoxBombsRemaining";
             this.textBoxBombsRemaining.ReadOnly = true;
-            this.textBoxBombsRemaining.Size = new System.Drawing.Size(71, 39);
+            this.textBoxBombsRemaining.Size = new System.Drawing.Size(63, 32);
             this.textBoxBombsRemaining.TabIndex = 0;
             this.textBoxBombsRemaining.TabStop = false;
             // 
             // labelRemaining
             // 
             this.labelRemaining.AutoSize = true;
-            this.labelRemaining.Location = new System.Drawing.Point(100, 22);
+            this.labelRemaining.Location = new System.Drawing.Point(88, 16);
             this.labelRemaining.Name = "labelRemaining";
-            this.labelRemaining.Size = new System.Drawing.Size(80, 20);
+            this.labelRemaining.Size = new System.Drawing.Size(64, 15);
             this.labelRemaining.TabIndex = 1;
             this.labelRemaining.Text = "Remaining";
             // 
@@ -68,30 +69,33 @@ namespace AtestatMinesweeper
             // 
             this.textBoxBombsFound.BackColor = System.Drawing.Color.Black;
             this.textBoxBombsFound.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBoxBombsFound.Font = new System.Drawing.Font("alarm clock", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxBombsFound.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxBombsFound.ForeColor = System.Drawing.Color.Aqua;
             this.textBoxBombsFound.HideSelection = false;
-            this.textBoxBombsFound.Location = new System.Drawing.Point(23, 57);
+            this.textBoxBombsFound.Location = new System.Drawing.Point(20, 43);
+            this.textBoxBombsFound.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBombsFound.Name = "textBoxBombsFound";
             this.textBoxBombsFound.ReadOnly = true;
-            this.textBoxBombsFound.Size = new System.Drawing.Size(71, 39);
+            this.textBoxBombsFound.Size = new System.Drawing.Size(63, 32);
             this.textBoxBombsFound.TabIndex = 2;
             this.textBoxBombsFound.TabStop = false;
             // 
             // labelFound
             // 
             this.labelFound.AutoSize = true;
-            this.labelFound.Location = new System.Drawing.Point(100, 67);
+            this.labelFound.Location = new System.Drawing.Point(88, 50);
             this.labelFound.Name = "labelFound";
-            this.labelFound.Size = new System.Drawing.Size(73, 20);
+            this.labelFound.Size = new System.Drawing.Size(57, 15);
             this.labelFound.TabIndex = 3;
             this.labelFound.Text = "Disarmed";
             // 
             // buttontest
             // 
-            this.buttontest.Location = new System.Drawing.Point(46, 125);
+            this.buttontest.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttontest.Location = new System.Drawing.Point(40, 94);
+            this.buttontest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttontest.Name = "buttontest";
-            this.buttontest.Size = new System.Drawing.Size(94, 29);
+            this.buttontest.Size = new System.Drawing.Size(82, 22);
             this.buttontest.TabIndex = 4;
             this.buttontest.Text = "test";
             this.buttontest.UseVisualStyleBackColor = true;
@@ -100,9 +104,10 @@ namespace AtestatMinesweeper
             // panelGame
             // 
             this.panelGame.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panelGame.Location = new System.Drawing.Point(289, 12);
+            this.panelGame.Location = new System.Drawing.Point(253, 9);
+            this.panelGame.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(650, 650);
+            this.panelGame.Size = new System.Drawing.Size(569, 488);
             this.panelGame.TabIndex = 5;
             // 
             // timerGame
@@ -113,22 +118,24 @@ namespace AtestatMinesweeper
             // 
             this.textBoxTimer.BackColor = System.Drawing.Color.Black;
             this.textBoxTimer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBoxTimer.Font = new System.Drawing.Font("alarm clock", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxTimer.ForeColor = System.Drawing.Color.SpringGreen;
             this.textBoxTimer.HideSelection = false;
-            this.textBoxTimer.Location = new System.Drawing.Point(23, 621);
+            this.textBoxTimer.Location = new System.Drawing.Point(20, 466);
+            this.textBoxTimer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxTimer.Name = "textBoxTimer";
             this.textBoxTimer.ReadOnly = true;
-            this.textBoxTimer.Size = new System.Drawing.Size(238, 39);
+            this.textBoxTimer.Size = new System.Drawing.Size(209, 32);
             this.textBoxTimer.TabIndex = 7;
             this.textBoxTimer.TabStop = false;
             this.textBoxTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonRandomizeTest
             // 
-            this.buttonRandomizeTest.Location = new System.Drawing.Point(46, 190);
+            this.buttonRandomizeTest.Location = new System.Drawing.Point(40, 142);
+            this.buttonRandomizeTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRandomizeTest.Name = "buttonRandomizeTest";
-            this.buttonRandomizeTest.Size = new System.Drawing.Size(94, 29);
+            this.buttonRandomizeTest.Size = new System.Drawing.Size(82, 22);
             this.buttonRandomizeTest.TabIndex = 8;
             this.buttonRandomizeTest.Text = "rando";
             this.buttonRandomizeTest.UseVisualStyleBackColor = true;
@@ -136,9 +143,9 @@ namespace AtestatMinesweeper
             // 
             // FormGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 672);
+            this.ClientSize = new System.Drawing.Size(1006, 504);
             this.Controls.Add(this.buttonRandomizeTest);
             this.Controls.Add(this.textBoxTimer);
             this.Controls.Add(this.panelGame);
@@ -147,7 +154,8 @@ namespace AtestatMinesweeper
             this.Controls.Add(this.textBoxBombsFound);
             this.Controls.Add(this.labelRemaining);
             this.Controls.Add(this.textBoxBombsRemaining);
-            this.MinimumSize = new System.Drawing.Size(500, 500);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(440, 385);
             this.Name = "FormGame";
             this.Text = "FormGame";
             this.ResumeLayout(false);
