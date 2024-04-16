@@ -144,6 +144,56 @@ namespace AtestatMinesweeper
             textBoxBombsRemaining.Text = Convert.ToString(globals.remainingBombCount);
             textBoxBombsFound.Text = Convert.ToString(globals.foundBombCount);
         }
+        public void mine(int i, int j)
+        {
+            if (globalMatrixes.gameField[i, j].hiddenStatus == 1)
+            {
+                globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkRed;
+                globalMatrixes.gameField[i, j].button.Text = "B";
+                globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                globalMatrixes.gameField[i, j].revealStatus = 10;
+            }
+            else
+            {
+                int neighbours = 0;
+                for (int ii = i - 1; ii <= i + 1; ii++)
+                {
+                    for (int jj = j - 1; jj <= j + 1; jj++)
+                    {
+                        if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)
+                            if (globalMatrixes.gameField[ii, jj].hiddenStatus == 1)
+                                neighbours++;
+                    }
+
+                }
+                globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkBlue;
+                if(neighbours>0)
+                globalMatrixes.gameField[i, j].button.Text = neighbours.ToString();
+                else
+                {
+                    globalMatrixes.gameField[i, j].button.Text = "";
+                    globalMatrixes.gameField[i, j].button.BackColor = Color.LightGray;
+                }
+                globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                globalMatrixes.gameField[i, j].revealStatus = neighbours;
+            }
+            if(globalMatrixes.gameField[i,j].revealStatus==0)//trying to find adjecant air 
+            {
+                for (int ii = i - 1; ii <= i + 1; ii++)
+                {
+                    for (int jj = j - 1; jj <= j + 1; jj++)
+                    {
+                        if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)
+                            if (globalMatrixes.gameField[ii, jj].hiddenStatus == 0 && globalMatrixes.gameField[ii,jj].revealStatus==-1 && globalMatrixes.gameField[ii, jj].flagStatus==0)
+                            {
+                                //MessageBox.Show(i.ToString() + " " + j.ToString());
+                                mine(ii, jj);
+                            }
+                    }
+
+                }
+            }
+        }
         public void spot_click(object sender, MouseEventArgs e)
         {
             Button btn = sender as Button;
@@ -157,31 +207,7 @@ namespace AtestatMinesweeper
 
                 if (e.Button == MouseButtons.Left)
                 {
-                    if (globalMatrixes.gameField[i, j].hiddenStatus == 1)
-                    {
-                        globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkRed;
-                        globalMatrixes.gameField[i, j].button.Text = "B";
-                        globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
-                        globalMatrixes.gameField[i, j].revealStatus = 10;
-                    }
-                    else
-                    {
-                        int neighbours = 0;
-                        for (int ii = i - 1; ii <= i + 1; ii++)
-                        {
-                            for (int jj = j - 1; jj <= j + 1; jj++)
-                            {
-                                if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)
-                                    if (globalMatrixes.gameField[ii, jj].hiddenStatus == 1)
-                                        neighbours++;
-                            }
-
-                        }
-                        globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkBlue;
-                        globalMatrixes.gameField[i, j].button.Text = neighbours.ToString();
-                        globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
-                        globalMatrixes.gameField[i, j].revealStatus = neighbours;
-                    }
+                    mine(i, j);
                 }
                 
                 else if(e.Button==MouseButtons.Right)
@@ -213,31 +239,7 @@ namespace AtestatMinesweeper
                             if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)// check if its inside the matrix
                                 if (globalMatrixes.gameField[ii, jj].revealStatus == -1 && globalMatrixes.gameField[ii,jj].flagStatus==0)//check if its unrevealed and unflagged
                                 {
-                                    if (globalMatrixes.gameField[ii, jj].hiddenStatus == 1)//check if its a bomb
-                                    {
-                                        globalMatrixes.gameField[ii, jj].button.ForeColor = Color.DarkRed;
-                                        globalMatrixes.gameField[ii, jj].button.Text = "B";
-                                        globalMatrixes.gameField[ii, jj].button.Font = new Font("Georgia", 15, FontStyle.Bold);
-                                        globalMatrixes.gameField[ii, jj].revealStatus = 10;
-                                    }
-                                    else
-                                    {
-                                        int neighbours = 0;
-                                        for (int iii = ii - 1; iii <= ii + 1; iii++)
-                                        {
-                                            for (int jjj = jj - 1; jjj <= jj + 1; jjj++)
-                                            {
-                                                if (iii >= 1 && iii <= globals.fieldSizeY && jjj >= 1 && jjj <= globals.fieldSizeX)
-                                                    if (globalMatrixes.gameField[iii, jjj].hiddenStatus == 1)
-                                                        neighbours++;
-                                            }
-
-                                        }
-                                        globalMatrixes.gameField[ii, jj].button.ForeColor = Color.DarkBlue;
-                                        globalMatrixes.gameField[ii, jj].button.Text = neighbours.ToString();
-                                        globalMatrixes.gameField[ii, jj].button.Font = new Font("Georgia", 15, FontStyle.Bold);
-                                        globalMatrixes.gameField[ii, jj].revealStatus = neighbours;
-                                    }
+                                mine(ii, jj);
                                 }
                         }
 
