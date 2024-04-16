@@ -92,11 +92,13 @@ namespace AtestatMinesweeper
             public Button button;
             public int hiddenStatus; //0=safe, 1=bomb;
             public int revealStatus; // -1=unrevealed, 0-9 = bombs surounding, 10=bomb;
+            public int flagStatus; //0=unflagged, 1=flagged
             public spot(Button buttonToSet, int hiddenStatusToSet, int revealStatusToSet)
             {
                 button = buttonToSet;
                 hiddenStatus = hiddenStatusToSet;
                 revealStatus = revealStatusToSet;
+                flagStatus = 0;
             }
         }
         public FormGame()
@@ -150,39 +152,97 @@ namespace AtestatMinesweeper
             string[] coords = btn.Tag.ToString().Split('_');
             i = Convert.ToInt32(coords[0]);
             j = Convert.ToInt32(coords[1]);
-            if(e.Button==MouseButtons.Left)
+            if (globalMatrixes.gameField[i, j].revealStatus == -1)
             {
 
-                if(globalMatrixes.gameField[i,j].hiddenStatus==1)
+                if (e.Button == MouseButtons.Left)
                 {
-                    globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkRed;
-                    globalMatrixes.gameField[i, j].button.Text = "B";
-                    globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                    if (globalMatrixes.gameField[i, j].hiddenStatus == 1)
+                    {
+                        globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkRed;
+                        globalMatrixes.gameField[i, j].button.Text = "B";
+                        globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                        globalMatrixes.gameField[i, j].revealStatus = 10;
+                    }
+                    else
+                    {
+                        int neighbours = 0;
+                        for (int ii = i - 1; ii <= i + 1; ii++)
+                        {
+                            for (int jj = j - 1; jj <= j + 1; jj++)
+                            {
+                                if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)
+                                    if (globalMatrixes.gameField[ii, jj].hiddenStatus == 1)
+                                        neighbours++;
+                            }
+
+                        }
+                        globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkBlue;
+                        globalMatrixes.gameField[i, j].button.Text = neighbours.ToString();
+                        globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                        globalMatrixes.gameField[i, j].revealStatus = neighbours;
+                    }
                 }
-                else
+                
+                else if(e.Button==MouseButtons.Right)
+                { 
+                    if(globalMatrixes.gameField[i,j].flagStatus==0)
+                    {
+                        globalMatrixes.gameField[i, j].flagStatus = 1;
+                        globalMatrixes.gameField[i, j].button.ForeColor = Color.LightGreen;
+                        globalMatrixes.gameField[i, j].button.Text = "F";
+                        globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                        updateCounters(-1, 1);
+                    }
+                    else
+                    {
+                        globalMatrixes.gameField[i, j].flagStatus = 0;
+                        globalMatrixes.gameField[i, j].button.ForeColor = Color.Black;
+                        globalMatrixes.gameField[i, j].button.Text = "";
+                        globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                        updateCounters(1, -1);
+                    }
+                }
+            }
+                else if(e.Button==MouseButtons.Middle)
                 {
-                    int neighbours = 0;
                     for (int ii = i - 1; ii <= i + 1; ii++)
                     {
                         for (int jj = j - 1; jj <= j + 1; jj++)
                         {
-                            if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)
-                                if (globalMatrixes.gameField[ii, jj].hiddenStatus == 1)
-                                    neighbours++;
+                            if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)// check if its inside the matrix
+                                if (globalMatrixes.gameField[ii, jj].revealStatus == -1 && globalMatrixes.gameField[ii,jj].flagStatus==0)//check if its unrevealed and unflagged
+                                {
+                                    if (globalMatrixes.gameField[ii, jj].hiddenStatus == 1)//check if its a bomb
+                                    {
+                                        globalMatrixes.gameField[ii, jj].button.ForeColor = Color.DarkRed;
+                                        globalMatrixes.gameField[ii, jj].button.Text = "B";
+                                        globalMatrixes.gameField[ii, jj].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                                        globalMatrixes.gameField[ii, jj].revealStatus = 10;
+                                    }
+                                    else
+                                    {
+                                        int neighbours = 0;
+                                        for (int iii = ii - 1; iii <= ii + 1; iii++)
+                                        {
+                                            for (int jjj = jj - 1; jjj <= jj + 1; jjj++)
+                                            {
+                                                if (iii >= 1 && iii <= globals.fieldSizeY && jjj >= 1 && jjj <= globals.fieldSizeX)
+                                                    if (globalMatrixes.gameField[iii, jjj].hiddenStatus == 1)
+                                                        neighbours++;
+                                            }
+
+                                        }
+                                        globalMatrixes.gameField[ii, jj].button.ForeColor = Color.DarkBlue;
+                                        globalMatrixes.gameField[ii, jj].button.Text = neighbours.ToString();
+                                        globalMatrixes.gameField[ii, jj].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                                        globalMatrixes.gameField[ii, jj].revealStatus = neighbours;
+                                    }
+                                }
                         }
 
                     }
-                    globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkBlue;
-                    globalMatrixes.gameField[i, j].button.Text = neighbours.ToString();
-                    globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
                 }
-            }
-            else
-            {
-                globalMatrixes.gameField[i, j].button.ForeColor = Color.LightGreen;
-                globalMatrixes.gameField[i, j].button.Text = "F";
-                globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
-            }
         }
         private void generateField(int squareCount)
         {
