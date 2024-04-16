@@ -12,12 +12,12 @@ namespace AtestatMinesweeper
     {
         public static class globals
         {
-            public static int totalBombCount = 10;
+            public static int totalBombCount = 25;
             public static int remainingBombCount;
             public static int foundBombCount = 0;
-            public static int totalSquares = 100;
-            public static int fieldSizeX = 5;
-            public static int fieldSizeY = 5;
+            public static int totalSquares = 225;
+            public static int fieldSizeX = 0;
+            public static int fieldSizeY = 0;
             public static float timeElapsedInSeconds = 0;
             public static int subSecondTime = 0;
             public static int secondTime = 0;
@@ -172,8 +172,8 @@ namespace AtestatMinesweeper
                 else
                 {
                     globalMatrixes.gameField[i, j].button.Text = "";
-                    globalMatrixes.gameField[i, j].button.BackColor = Color.LightGray;
                 }
+                globalMatrixes.gameField[i, j].button.BackColor = Color.LightGray;
                 globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
                 globalMatrixes.gameField[i, j].revealStatus = neighbours;
             }
@@ -275,10 +275,6 @@ namespace AtestatMinesweeper
 
 
         }
-        private void buttontest_Click(object sender, EventArgs e)
-        {
-            updateCounters(-1, 1);
-        }
         private void timerGame_Tick(object sender, EventArgs e)
         {
             //Alfred, adu Bat-Streangul acum!!!
@@ -292,11 +288,6 @@ namespace AtestatMinesweeper
             textBoxTimer.Text=globals.secondTime.ToString() + "." +globals.subSecondTime.ToString();
         }
 
-        private void buttonRandomizeTest_Click(object sender, EventArgs e)
-        {
-            generateBackendMatrix(globals.fieldSizeX, globals.fieldSizeY);
-            globalMatrixes.convertBackToFront();
-
-        }
+       
     }
 }

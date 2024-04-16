@@ -20,7 +20,7 @@ namespace AtestatMinesweeper
             }
             base.Dispose(disposing);
         }
-        int x;
+        //int x;
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -34,11 +34,9 @@ namespace AtestatMinesweeper
             this.labelRemaining = new System.Windows.Forms.Label();
             this.textBoxBombsFound = new System.Windows.Forms.TextBox();
             this.labelFound = new System.Windows.Forms.Label();
-            this.buttontest = new System.Windows.Forms.Button();
             this.panelGame = new System.Windows.Forms.Panel();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
             this.textBoxTimer = new System.Windows.Forms.TextBox();
-            this.buttonRandomizeTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxBombsRemaining
@@ -89,18 +87,6 @@ namespace AtestatMinesweeper
             this.labelFound.TabIndex = 3;
             this.labelFound.Text = "Disarmed";
             // 
-            // buttontest
-            // 
-            this.buttontest.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttontest.Location = new System.Drawing.Point(40, 94);
-            this.buttontest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttontest.Name = "buttontest";
-            this.buttontest.Size = new System.Drawing.Size(82, 22);
-            this.buttontest.TabIndex = 4;
-            this.buttontest.Text = "test";
-            this.buttontest.UseVisualStyleBackColor = true;
-            this.buttontest.Click += new System.EventHandler(this.buttontest_Click);
-            // 
             // panelGame
             // 
             this.panelGame.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -130,26 +116,13 @@ namespace AtestatMinesweeper
             this.textBoxTimer.TabStop = false;
             this.textBoxTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // buttonRandomizeTest
-            // 
-            this.buttonRandomizeTest.Location = new System.Drawing.Point(40, 142);
-            this.buttonRandomizeTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonRandomizeTest.Name = "buttonRandomizeTest";
-            this.buttonRandomizeTest.Size = new System.Drawing.Size(82, 22);
-            this.buttonRandomizeTest.TabIndex = 8;
-            this.buttonRandomizeTest.Text = "rando";
-            this.buttonRandomizeTest.UseVisualStyleBackColor = true;
-            this.buttonRandomizeTest.Click += new System.EventHandler(this.buttonRandomizeTest_Click);
-            // 
             // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 504);
-            this.Controls.Add(this.buttonRandomizeTest);
             this.Controls.Add(this.textBoxTimer);
             this.Controls.Add(this.panelGame);
-            this.Controls.Add(this.buttontest);
             this.Controls.Add(this.labelFound);
             this.Controls.Add(this.textBoxBombsFound);
             this.Controls.Add(this.labelRemaining);
