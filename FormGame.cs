@@ -26,6 +26,19 @@ namespace AtestatMinesweeper
         {
             public static int[,] matrixBackend= new int [globals.fieldSizeX + 1, globals.fieldSizeY + 1];
             public static spot[,] gameField = new spot[globals.fieldSizeY+1, globals.fieldSizeX+1];
+            public static void backToFrontHidden()
+            {
+                for (int i = 1; i <= globals.fieldSizeY; i++)
+                {
+                    for (int j = 1; j <= globals.fieldSizeX; j++)
+                    {
+                        if (matrixBackend[i, j] == 1)
+                            gameField[i, j].hiddenStatus = 1;
+                        else
+                            gameField[i, j].hiddenStatus = 0;
+                    }
+                }
+            }
             public static void convertBackToFront()
             {
                 for(int i=1;i<=globals.fieldSizeY;i++)
@@ -96,7 +109,7 @@ namespace AtestatMinesweeper
             generateField(globals.totalSquares);
             timerGame.Enabled = Enabled;
             generateBackendMatrix(globals.fieldSizeX, globals.fieldSizeY);
-
+            globalMatrixes.backToFrontHidden();
 
         }
         public void generateBackendMatrix(int fsizex,int fsizeY)
@@ -129,6 +142,48 @@ namespace AtestatMinesweeper
             textBoxBombsRemaining.Text = Convert.ToString(globals.remainingBombCount);
             textBoxBombsFound.Text = Convert.ToString(globals.foundBombCount);
         }
+        public void spot_click(object sender, MouseEventArgs e)
+        {
+            Button btn = sender as Button;
+            //MessageBox.Show((btn.Tag).ToString());
+            int i, j;
+            string[] coords = btn.Tag.ToString().Split('_');
+            i = Convert.ToInt32(coords[0]);
+            j = Convert.ToInt32(coords[1]);
+            if(e.Button==MouseButtons.Left)
+            {
+
+                if(globalMatrixes.gameField[i,j].hiddenStatus==1)
+                {
+                    globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkRed;
+                    globalMatrixes.gameField[i, j].button.Text = "B";
+                    globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                }
+                else
+                {
+                    int neighbours = 0;
+                    for (int ii = i - 1; ii <= i + 1; ii++)
+                    {
+                        for (int jj = j - 1; jj <= j + 1; jj++)
+                        {
+                            if (ii >= 1 && ii <= globals.fieldSizeY && jj >= 1 && jj <= globals.fieldSizeX)
+                                if (globalMatrixes.gameField[ii, jj].hiddenStatus == 1)
+                                    neighbours++;
+                        }
+
+                    }
+                    globalMatrixes.gameField[i, j].button.ForeColor = Color.DarkBlue;
+                    globalMatrixes.gameField[i, j].button.Text = neighbours.ToString();
+                    globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                }
+            }
+            else
+            {
+                globalMatrixes.gameField[i, j].button.ForeColor = Color.LightGreen;
+                globalMatrixes.gameField[i, j].button.Text = "F";
+                globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+            }
+        }
         private void generateField(int squareCount)
         {
             int currentCell = 1;
@@ -143,12 +198,15 @@ namespace AtestatMinesweeper
                         Width = spotSizeWidth,
                         Height = spotSizeHeight,
                         BackColor = Color.Gray,
-                        Location = new Point((x-1) * spotSizeWidth, (y-1) * spotSizeHeight),
+                        Location = new Point((x - 1) * spotSizeWidth, (y - 1) * spotSizeHeight),
                         FlatStyle = FlatStyle.Flat,
                         Parent = panelGame,
+                        Tag = x.ToString() + "_" + y.ToString(),
                         Text = "",//initilazing button properties
                     };
+
                     globalMatrixes.gameField[x, y] = new spot(buttonToPlace, 0, -1);  //intilizes button as safe and unrevealed 
+                    globalMatrixes.gameField[x, y].button.MouseDown += new MouseEventHandler(this.spot_click);
                     currentCell++;
                 }
             }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\s310\\Desktop\\workatestat\\atestat-minesweeper\\AtestatMinesweeper.csproj": {}
+    "C:\\Users\\s310\\Desktop\\Paun Tudor Atestat\\atestat-minesweeper\\AtestatMinesweeper.csproj": {}
   },
   "projects": {
-    "C:\\Users\\s310\\Desktop\\workatestat\\atestat-minesweeper\\AtestatMinesweeper.csproj": {
+    "C:\\Users\\s310\\Desktop\\Paun Tudor Atestat\\atestat-minesweeper\\AtestatMinesweeper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s310\\Desktop\\workatestat\\atestat-minesweeper\\AtestatMinesweeper.csproj",
+        "projectUniqueName": "C:\\Users\\s310\\Desktop\\Paun Tudor Atestat\\atestat-minesweeper\\AtestatMinesweeper.csproj",
         "projectName": "AtestatMinesweeper",
-        "projectPath": "C:\\Users\\s310\\Desktop\\workatestat\\atestat-minesweeper\\AtestatMinesweeper.csproj",
+        "projectPath": "C:\\Users\\s310\\Desktop\\Paun Tudor Atestat\\atestat-minesweeper\\AtestatMinesweeper.csproj",
         "packagesPath": "C:\\Users\\s310\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s310\\Desktop\\workatestat\\atestat-minesweeper\\obj\\",
+        "outputPath": "C:\\Users\\s310\\Desktop\\Paun Tudor Atestat\\atestat-minesweeper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
