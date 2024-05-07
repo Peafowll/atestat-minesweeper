@@ -23,6 +23,7 @@ namespace AtestatMinesweeper
             this.Hide();
             FormGame fGame = new FormGame();
             fGame.ShowDialog();
+            this.Close();
         }
     }
 }

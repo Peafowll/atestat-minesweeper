@@ -12,15 +12,17 @@ namespace AtestatMinesweeper
     {
         public static class globals
         {
-            public static int totalBombCount = 25;
+            public static int totalBombCount = 20;
             public static int remainingBombCount;
             public static int foundBombCount = 0;
-            public static int totalSquares = 225;
+            public static int totalSquares = 169;
             public static int fieldSizeX = 0;
             public static int fieldSizeY = 0;
             public static float timeElapsedInSeconds = 0;
             public static int subSecondTime = 0;
             public static int secondTime = 0;
+            public static int correctFlags = 0;
+            public static int revealedSpots = 0;
         }
         public static class globalMatrixes
         {
@@ -152,9 +154,15 @@ namespace AtestatMinesweeper
                 globalMatrixes.gameField[i, j].button.Text = "B";
                 globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
                 globalMatrixes.gameField[i, j].revealStatus = 10;
+                timerGame.Stop();
+                MessageBox.Show("Ai explodat!");
+                this.Close();
             }
             else
             {
+                globals.revealedSpots++;
+                if (globalMatrixes.gameField[i, j].flagStatus == 1)
+                    updateCounters(1, -1);
                 int neighbours = 0;
                 for (int ii = i - 1; ii <= i + 1; ii++)
                 {
@@ -193,6 +201,13 @@ namespace AtestatMinesweeper
 
                 }
             }
+            //MessageBox.Show(globals.correctFlags.ToString() + "?=?" + globals.totalBombCount.ToString() + " " + globals.revealedSpots.ToString() + "?=?" + (globals.totalSquares - globals.correctFlags).ToString() );
+            if(globals.correctFlags==globals.totalBombCount && globals.revealedSpots==globals.totalSquares-globals.correctFlags)
+            {
+                timerGame.Stop();
+                MessageBox.Show("Ai castigat! Timp final : " + globals.secondTime.ToString() + ":" + globals.subSecondTime.ToString());
+                this.Close();
+            }
         }
         public void spot_click(object sender, MouseEventArgs e)
         {
@@ -218,7 +233,28 @@ namespace AtestatMinesweeper
                         globalMatrixes.gameField[i, j].button.ForeColor = Color.LightGreen;
                         globalMatrixes.gameField[i, j].button.Text = "F";
                         globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                        if (globalMatrixes.gameField[i, j].hiddenStatus == 1)
+                            globals.correctFlags++;
                         updateCounters(-1, 1);
+                        //MessageBox.Show(globals.correctFlags.ToString());
+                        if(globals.correctFlags==globals.totalBombCount)
+                        {
+                            int finished = 1;
+                            for (int parcI = 1; parcI <= globals.fieldSizeX; parcI++)
+                            {
+                                for (int parcJ = 1; parcJ <= globals.fieldSizeY; parcJ++)
+                                {
+                                    if (globalMatrixes.gameField[parcI, parcJ].revealStatus == -1 && globalMatrixes.gameField[parcI, parcJ].flagStatus==0)
+                                        finished = 0;
+                                }
+                            }
+                            if(finished==1)
+                            {
+                                timerGame.Stop();
+                                MessageBox.Show("Ai castigat! Timp final : " + globals.secondTime.ToString() + ":" + globals.subSecondTime.ToString());
+                                this.Close();
+                            }
+                        }
                     }
                     else
                     {
@@ -226,6 +262,9 @@ namespace AtestatMinesweeper
                         globalMatrixes.gameField[i, j].button.ForeColor = Color.Black;
                         globalMatrixes.gameField[i, j].button.Text = "";
                         globalMatrixes.gameField[i, j].button.Font = new Font("Georgia", 15, FontStyle.Bold);
+                        if (globalMatrixes.gameField[i, j].hiddenStatus == 1)
+                            globals.correctFlags--;
+                        //MessageBox.Show(globals.correctFlags.ToString());
                         updateCounters(1, -1);
                     }
                 }
